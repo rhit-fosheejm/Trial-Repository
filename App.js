@@ -9,6 +9,8 @@ export default function App() {
       <Text>
         Add One more line that confirms you are able to pull and push the code
         (Ujjaval)
+        This is my added line. 
+        (Jayden)
       </Text>
       <StatusBar style="auto" />
     </View>
