@@ -1,102 +1,146 @@
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { useEffect } from "react";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import MainScreen from "./screens/MainScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { DrawerContent } from "./screens/DrawerContent";
+import Icon from "react-native-vector-icons/Ionicons";
+import RootStack from "./screens/RootStack";
+import { AuthorizationContext } from "./component/context";
+import AsyncStorage from "@react-native-community/async-storage";
 
-// import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-// import {MapView} from 'react-native-maps';
+const Drawer = createDrawerNavigator();
 
-// // export default class App extends React.Component{
-//   constructor(props) {
-//     super(props);
+export default function App() {
+  // const [isLoading, setIsLoading] = React.useState(true);
+  // const [userToken, setUserToken] = React.useState(null);
 
-//     this.state= {
-//       region: {
-//         latitude: 37.78825,
-//         longitude: -122.4324,
-//         latitudeDelta: 0.922,
-//         longitudeDelta: 0.0421,
-//       }
-//     }
-//   }
-//  render() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>HomeScreen</Text>
-//       <MapView
-//           initialRegion={this.state.region}
-//           showsCompass ={true}
-//           rotateEnabled ={false}
-//           style={{ flex: 1}}
-//           />
-//     </View>
-//   );
-// }
-// }
+  const initiallLoginState = {
+    isLoading: true,
+    userName: null,
+    userToken: null,
+  };
 
+  const loginReducer = (previousState, action) => {
+    switch (action.type) {
+      case "RETRIEVE_TOKEN":
+        return {
+          ...previousState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case "LOGIN":
+        return {
+          ...previousState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case "LOGOUT":
+        return {
+          ...previousState,
+          userName: null,
+          userToken: null,
+          isLoading: false,
+        };
+      case "REGISTER":
+        return {
+          ...previousState,
+          userName: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+    }
+  };
+  const [loginState, dispatch] = React.useReducer(
+    loginReducer,
+    initiallLoginState
+  );
+  const authorizContext = React.useMemo(
+    () => ({
+      signIn: async (foundUser) => {
+        // setUserToken("abcd");
+        // setIsLoading(false);
+        const userToken = String(foundUser[0].userToken);
+        const userName = String(foundUser[0].username);
+        try {
+          await AsyncStorage.setItem("userToken", userToken);
+        } catch (e) {
+          console.log(e);
+        }
+        dispatch({ type: "LOGIN", id: userName, token: userToken });
+      },
+      signOut: async () => {
+        // setUserToken(null);
+        // setIsLoading(false);
+        try {
+          await AsyncStorage.removeItem("userToken");
+        } catch (e) {
+          console.log(e);
+        }
+        dispatch({ type: "LOGOUT" });
+      },
+      signUp: () => {
+        // setUserToken("abcd");
+        // setIsLoading(false);
+      },
+    }),
+    []
+  );
 
+  useEffect(() => {
+    setTimeout(async () => {
+      // setIsLoading(false);
+      let userToken;
+      userToken = null;
+      try {
+        userToken = await AsyncStorage.getItem("userToken");
+      } catch (e) {
+        console.log(e);
+      }
+      dispatch({ type: "RETRIEVE_TOKEN", token: userToken });
+    }, 1000);
+  }, []);
 
-import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import MapView, { PROVIDER_GOOGLE, Marker, Circle, Polyline} from 'react-native-maps';
-import {locations } from './Data'
-import RNGooglePlaces from 'react-native-google-places';
-// import CustomMarker from './CustomMarker'
-
-export default class App extends React.Component {
-  // openSearchModal(){
-  //   RNGooglePlaces.openAutocompleteModal().then((place) => {
-  //     console.log(place);
-  //     // place represents user's selection from the suggestions
-  //     //and it is a simplified Google Place Object
-  //   })
-  //   .catch(error => console.log(error.message)); // error is a Javascript Error Object
-  // }
-
-  render() {
+  if (loginState.isLoading) {
     return (
-      <View style ={styles.container}>
-        {/* <TouchableOpacity
-        // style={styles.button}
-        onPress ={()=> this.openSearchModal()}
-        >
-          <Text style = {{marginTop:40, padding:30}}>Pick a Place</Text>
-        </TouchableOpacity> */}
-
-      <MapView
-         style={{ flex: 1 }}
-         provider={PROVIDER_GOOGLE}
-         showsUserLocation
-         initialRegion={{
-         latitude: 39.76691,
-         longitude:-86.14996 ,
-         latitudeDelta: 0.0922,
-         longitudeDelta: 0.0421,
-         }}
-      >
-
-        {locations.map(marker => (
-          <Circle center = {{latitude: marker.latitude, longitude: marker.longitude}} radius= {550} />
-         ))}
-         
-
-         {locations.map(marker => (
-          <Polyline coordinates=  {locations} />
-         ))}
-      
-
-        {
-          locations.map(marker => (
-          <Marker
-          coordinate = {{latitude: marker.latitude, 
-          longitude: marker.longitude}}>
-
-          {/* <CustomMarker item = {marker}/> */}
-          </Marker>
-         ))
-         }
-
-      </MapView>
+      <View style={styles.loading}>
+        <ActivityIndicator size="large" />
       </View>
-    )
+    );
   }
+  return (
+    <AuthorizationContext.Provider value={authorizContext}>
+      <NavigationContainer>
+        {loginState.userToken !== null ? (
+          <Drawer.Navigator
+            drawerContent={(props) => <DrawerContent {...props} />}
+          >
+            <Drawer.Screen
+              name="Home"
+              component={MainScreen}
+              options={{
+                title: "Map",
+                headerLeft: () => (
+                  <Icon.Button
+                    name="ios-menu"
+                    size={25}
+                    options={() => {
+                      props.navigation.openDrawer();
+                    }}
+                  ></Icon.Button>
+                ),
+              }}
+            />
+          </Drawer.Navigator>
+        ) : (
+          <RootStack />
+        )}
+      </NavigationContainer>
+    </AuthorizationContext.Provider>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -104,4 +148,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
-})
+  loading: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
