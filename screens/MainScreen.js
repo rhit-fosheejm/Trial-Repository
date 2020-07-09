@@ -2,10 +2,10 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Circle, Polyline} from 'react-native-maps';
-import {locations } from './Data'
+// import {locations } from './Data'
 import RNGooglePlaces from 'react-native-google-places';
 
-export function DrawerContent(props) {
+export function MainScreen(props) {
     return (
       <View style ={styles.container}>
         {/* <TouchableOpacity
@@ -15,7 +15,8 @@ export function DrawerContent(props) {
           <Text style = {{marginTop:40, padding:30}}>Pick a Place</Text>
         </TouchableOpacity> */}
 
-      <MapView
+        <Text> This will become the map page!</Text>
+      {/* <MapView
          style={{ flex: 1 }}
          provider={PROVIDER_GOOGLE}
          showsUserLocation
@@ -43,12 +44,12 @@ export function DrawerContent(props) {
           coordinate = {{latitude: marker.latitude, 
           longitude: marker.longitude}}>
 
-          {/* <CustomMarker item = {marker}/> */}
+        
           </Marker>
          ))
-         }
+         } */}
 
-      </MapView>
+      {/* </MapView> */}
       </View>
     )}
 
