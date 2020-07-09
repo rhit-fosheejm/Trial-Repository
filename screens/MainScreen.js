@@ -2,10 +2,11 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Circle, Polyline} from 'react-native-maps';
-// import {locations } from './Data'
+import {locations } from './Data'
 import RNGooglePlaces from 'react-native-google-places';
 
-export function MainScreen(props) {
+// export function MainScreen(props) {
+  const MainScreen = (props) => {
     return (
       <View style ={styles.container}>
         {/* <TouchableOpacity
@@ -15,8 +16,7 @@ export function MainScreen(props) {
           <Text style = {{marginTop:40, padding:30}}>Pick a Place</Text>
         </TouchableOpacity> */}
 
-        <Text> This will become the map page!</Text>
-      {/* <MapView
+      <MapView
          style={{ flex: 1 }}
          provider={PROVIDER_GOOGLE}
          showsUserLocation
@@ -47,9 +47,9 @@ export function MainScreen(props) {
         
           </Marker>
          ))
-         } */}
+         } 
 
-      {/* </MapView> */}
+       </MapView>
       </View>
     )}
 
@@ -65,6 +65,6 @@ export function MainScreen(props) {
       
       });
 
-export default MainScreen;
+ export default MainScreen;
 
 
