@@ -214,7 +214,7 @@ const SignUpScreen = (props) => {
             }}
           >
             <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
+              colors={["#7BD70B", "#01ab9d"]}
               style={styles.signIn}
             >
               <Text style={[styles.textSign, { color: "#fff" }]}>Sign Up</Text>
@@ -235,7 +235,7 @@ const SignUpScreen = (props) => {
               style={[
                 styles.textSign,
                 {
-                  color: "#009387",
+                  color: "#7BD70B",
                 },
               ]}
             >
@@ -253,7 +253,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#7BD70B",
   },
   header: {
     flex: 1,
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   text_footer: {
-    color: "#05375a",
+    color: "#7BD70B",
     fontSize: 18,
   },
   action: {

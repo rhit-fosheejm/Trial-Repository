@@ -13,6 +13,7 @@ import {
 } from "react-native-paper";
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import Icons from "react-native-vector-icons/FontAwesome";
 import { AuthorizationContext } from "../component/context";
 
 export function DrawerContent(props) {
@@ -21,7 +22,44 @@ export function DrawerContent(props) {
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
         <View styles={styles.drawerContent}>
-          <Text>Thi is Main content so far</Text>
+          <Drawer.Section style={styles.drawerSection}>
+            <DrawerItem
+              icon={({ color, size }) => (
+                <Icon name="home-outline" color={color} size={size} />
+              )}
+              label="Home"
+              onPress={() => {
+                props.navigation.navigate("Home");
+              }}
+            />
+            <DrawerItem
+              icon={({ color, size }) => (
+                <Icon name="account-outline" color={color} size={size} />
+              )}
+              label="Profile"
+              onPress={() => {
+                // props.navigation.navigate("Profile");
+              }}
+            />
+            <DrawerItem
+              icon={({ color, size }) => (
+                <Icons name="dollar" color={color} size={size} />
+              )}
+              label="Payment"
+              onPress={() => {
+                //props.navigation.navigate("BookmarkScreen");
+              }}
+            />
+            <DrawerItem
+              icon={({ color, size }) => (
+                <Icon name="settings-outline" color={color} size={size} />
+              )}
+              label="Settings"
+              onPress={() => {
+                // props.navigation.navigate("SettingScreen");
+              }}
+            />
+          </Drawer.Section>
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
