@@ -17,17 +17,14 @@ import MapView, {
 } from "react-native-maps";
 import { locations } from "./Data";
 import RNGooglePlaces from "react-native-google-places";
+import {DestinationButton} from './component/DestinationButton'
 
 // export function MainScreen(props) {
 const MainScreen = (props) => {
   return (
     <View style={styles.container}>
-      {/* <TouchableOpacity
-        // style={styles.button}
-        onPress ={()=> this.openSearchModal()}
-        >
-          <Text style = {{marginTop:40, padding:30}}>Pick a Place</Text>
-        </TouchableOpacity> */}
+     
+        <DestinationButton/>
       <MapView
         style={{ flex: 1 }}
         provider={PROVIDER_GOOGLE}
