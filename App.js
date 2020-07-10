@@ -11,6 +11,7 @@ import RootStack from "./screens/RootStack";
 import { AuthorizationContext } from "./component/context";
 import AsyncStorage from "@react-native-community/async-storage";
 import { createStackNavigator } from "@react-navigation/stack";
+import BarCode from "./screens/BarCode";
 
 const Drawer = createDrawerNavigator();
 
@@ -120,7 +121,8 @@ export default function App() {
           <Drawer.Navigator
             drawerContent={(props) => <DrawerContent {...props} />}
           >
-            <Drawer.Screen name="Home" component={StackScreen} />
+            <Drawer.Screen name="StackScreen" component={StackScreen} />
+            <Drawer.Screen name="Payment" component={BarCode} />
           </Drawer.Navigator>
         ) : (
           <RootStack />
