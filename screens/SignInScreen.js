@@ -165,7 +165,7 @@ const SignInScreen = (props) => {
           </Text>
         )}
         <TouchableOpacity>
-          <Text style={{ color: "#009387", marginTop: 15 }}>
+          <Text style={{ color: "#7BD70B", marginTop: 15 }}>
             Forogot password ?
           </Text>
         </TouchableOpacity>
@@ -177,7 +177,7 @@ const SignInScreen = (props) => {
             }}
           >
             <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
+              colors={["#7BD70B", "#01ab9d"]}
               style={styles.signIn}
             >
               <Text style={[styles.textSign, { color: "#fff" }]}>Sign In</Text>
@@ -199,7 +199,7 @@ const SignInScreen = (props) => {
               style={[
                 styles.textSign,
                 {
-                  color: "#009387",
+                  color: "#7BD70B",
                 },
               ]}
             >
@@ -217,7 +217,7 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#7BD70B",
   },
   header: {
     flex: 1,
@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   text_footer: {
-    color: "#05375a",
+    color: "#7BD70B",
     fontSize: 18,
   },
   action: {

@@ -3,13 +3,14 @@ import React from "react";
 import { useEffect } from "react";
 import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import MainScreen from "./screens/MainScreen";
+import StackScreen from "./screens/StackScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerContent } from "./screens/DrawerContent";
-import Icon from "react-native-vector-icons/Ionicons";
 import RootStack from "./screens/RootStack";
 import { AuthorizationContext } from "./component/context";
 import AsyncStorage from "@react-native-community/async-storage";
+import { createStackNavigator } from "@react-navigation/stack";
 
 const Drawer = createDrawerNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
   // const [isLoading, setIsLoading] = React.useState(true);
   // const [userToken, setUserToken] = React.useState(null);
 
+  const HomeStack = createStackNavigator();
   const initiallLoginState = {
     isLoading: true,
     userName: null,
@@ -114,26 +116,11 @@ export default function App() {
   return (
     <AuthorizationContext.Provider value={authorizContext}>
       <NavigationContainer>
-        {loginState.userToken == null ? (
+        {loginState.userToken !== null ? (
           <Drawer.Navigator
             drawerContent={(props) => <DrawerContent {...props} />}
           >
-            <Drawer.Screen
-              name="Home"
-              component={MainScreen}
-              options={{
-                title: "Map",
-                headerLeft: () => (
-                  <Icon.Button
-                    name="ios-menu"
-                    size={25}
-                    options={() => {
-                      props.navigation.openDrawer();
-                    }}
-                  ></Icon.Button>
-                ),
-              }}
-            />
+            <Drawer.Screen name="Home" component={StackScreen} />
           </Drawer.Navigator>
         ) : (
           <RootStack />
@@ -146,7 +133,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   loading: {
     flex: 1,
