@@ -17,14 +17,13 @@ import MapView, {
 } from "react-native-maps";
 import { locations } from "./Data";
 import RNGooglePlaces from "react-native-google-places";
-import {DestinationButton} from './component/DestinationButton'
+import { DestinationButton } from "../component/DestinationButton";
 
 // export function MainScreen(props) {
 const MainScreen = (props) => {
   return (
     <View style={styles.container}>
-     
-        <DestinationButton/>
+      {/* <DestinationButton /> */}
       <MapView
         style={{ flex: 1 }}
         provider={PROVIDER_GOOGLE}

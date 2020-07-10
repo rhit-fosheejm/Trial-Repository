@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Icon from "react-native-vector-icons/Ionicons";
 
 import MainScreen from "./MainScreen";
-//import QRcodeScanner from "./QRcodeScanner";
+import BarCode from "./BarCode";
 //import PaymentScreen from "./PaymentScreen";
 // import ExploreScreen from './ExploreScreen';
 // import ProfileScreen from './ProfileScreen';
@@ -17,7 +17,7 @@ const StackScreen = ({ navigation }) => {
   return (
     <Stack.Navigator headerMode="none">
       <Stack.Screen name="Home" component={HomeStackScreen} />
-      {/* <Stack.Screen name="Payment" component={PaymentStackScreen} /> */}
+      <Stack.Screen name="Payment" component={PaymentStackScreen} />
     </Stack.Navigator>
   );
 };
@@ -56,7 +56,7 @@ const PaymentStackScreen = ({ navigation }) => (
   <PaymentStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#1f65ff",
+        backgroundColor: "#7BD70B",
       },
       headerTintColor: "#fff",
       headerTitleStyle: {
@@ -65,14 +65,14 @@ const PaymentStackScreen = ({ navigation }) => (
     }}
   >
     <PaymentStack.Screen
-      name="Details"
-      component={QRcodeScanner}
+      name="Payment"
+      component={BarCode}
       options={{
         headerLeft: () => (
           <Icon.Button
             name="ios-menu"
             size={25}
-            backgroundColor="#1f65ff"
+            backgroundColor="#7BD70B"
             onPress={() => navigation.openDrawer()}
           ></Icon.Button>
         ),

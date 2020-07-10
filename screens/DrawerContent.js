@@ -47,7 +47,7 @@ export function DrawerContent(props) {
               )}
               label="Payment"
               onPress={() => {
-                //props.navigation.navigate("BookmarkScreen");
+                props.navigation.navigate("Payment");
               }}
             />
             <DrawerItem
