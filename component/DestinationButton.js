@@ -10,16 +10,16 @@ import { Ionicons } from "@expo/vector-icons";
 
 const WIDTH = Dimensions.get("window").width;
 
-const DestinationButton = (props) => {
+export const DestinationButton = (props) => {
   return (
     <TouchableOpacity onPress={() => {}} style={styles.container}>
       <View style={styles.leftCol}>
-        <Text style={{ fontSize: 8 }}>('\u25A0')</Text>
+        <Text style={{ fontSize: 8 }}></Text>
       </View>
       <View style={styles.centerCol}>
         <Text
           style={{
-            fontFamily: "sans-serif-thin",
+            // fontFamily: "sans-serif-thin",
             fontSize: 21,
             color: "#545454",
           }}
@@ -38,7 +38,6 @@ const DestinationButton = (props) => {
     </TouchableOpacity>
   );
 };
-export default DestinationButton;
 //should be StyleSheet (had Stylesheet)
 const styles = StyleSheet.create({
   container: {
@@ -71,3 +70,5 @@ const styles = StyleSheet.create({
     //borderColor: "eded", somethinf wrong with value 'ededed
   },
 });
+
+export default DestinationButton;
