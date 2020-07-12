@@ -17,11 +17,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.TechPoint.Project",
-      "config": {
-        "googleMapsApiKey": "AIzaSyANWfRvQSSC2WPDTOfNJGeKC9KNG_Fg83g"
-      }
+    "supportsTablet": true,
+  "bundleIdentifier":"com.tech.Project",
+  "buildNumber": "1.0.0"
+   
+    },
+    "android": {
+      "package": "com.tech.Project",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
