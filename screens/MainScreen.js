@@ -34,28 +34,7 @@
 //   longitude: -86.17996
 // }]
 
-// export default function MainScreen() {
-// const [location, setLocation] = useState(null);
-//   const [errorMsg, setErrorMsg] = useState(null);
 
-//   useEffect(() => {
-//     if (Platform.OS === 'android' && !Constants.isDevice) {
-//       setErrorMsg(
-//         'Oops, this will not work on Sketch in an Android emulator. Try it on your device!'
-//       );
-//     } else {
-//       (async () => {
-//         let { status } = await Location.requestPermissionsAsync();
-//         if (status !== 'granted') {
-//           setErrorMsg('Permission to access location was denied');
-//         }
-
-//         let location = await Location.getCurrentPositionAsync({});
-//         setLocation(location);
-//         coordinates[0]={latitude:location.latitude, longitude:location.longitude}
-//       })();
-//     }
-//   });
 // // export default class MainScreen extends React.Component{
 
 //   //  render(){
@@ -102,12 +81,15 @@
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Dimensions, Image, View, StatusBar, TouchableOpacity } from "react-native";
 import MapViewDirections from "react-native-maps-directions";
+// import Search from "../component/Search";
+import { DestinationButton } from "../component/DestinationButton";
 
 import MapView from 'react-native-maps';
 import Polyline from '@mapbox/polyline';
 
 const GOOGLE_MAPS_APIKEY = "AIzaSyCkNvrH4iYOhuIrUsmFE1bEgDCBJSTX9Fg";
-class MainScreen extends Component {
+export class MainScreen extends React.Component{
+// class MainScreen extends Component {
   constructor(props) {
     super(props);
 
@@ -182,9 +164,8 @@ class MainScreen extends Component {
   render() {
 
     return (
+
       
-  
-     
       <MapView 
         apikey={GOOGLE_MAPS_APIKEY}
       style={styles.map} initialRegion={{
@@ -233,6 +214,5 @@ const styles = StyleSheet.create({
   },
 });
 
+
 export default MainScreen;
-
-
