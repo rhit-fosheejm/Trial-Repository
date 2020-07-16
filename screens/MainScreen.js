@@ -112,10 +112,10 @@ import Geojson from "react-native-geojson";
 import AutoCompleteBox from "../component/AutoCompleteBox";
 import AutoCompleteResultList from "../component/AutoCompleteResultList";
 import { getPredictionWithDetail } from "../services.js";
-import Icon from "react-native-vector-icons/Feather";
-
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import MapView from "react-native-maps";
 import Polyline from "@mapbox/polyline";
+import { LinearGradient } from "expo-linear-gradient";
 
 const alcatraz = {
   type: "FeatureCollection",
@@ -280,6 +280,13 @@ export default class MainScreen extends React.Component {
               />
             )}
         </MapView>
+        <View style={styles.button}>
+          <TouchableOpacity>
+            <LinearGradient colors={["#08d4c4", "#08D45D"]} style={styles.hail}>
+              <MaterialCommunityIcons name="hail" size={40} />
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -298,6 +305,19 @@ const styles = StyleSheet.create({
 
   //   backgroundColor: "#fff",
   // },
+  button: {
+    // alignItems: "flex-end",
+    marginTop: 750,
+    marginLeft: 184,
+  },
+  hail: {
+    padding: 5,
+    height: 80,
+    width: 80,
+    borderRadius: 160,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
 
 // const styles = StyleSheet.create({

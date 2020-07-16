@@ -19,7 +19,10 @@ const BarCode = () => {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    alert(
+      "Thank you For Riding with EZHail. Charges: 1.75$ Reward earned: 5 Points"
+    );
+    // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   };
   //   const [hasPermission, setHasPermission] = useState(null);
   //   const [type, setType] = useState(Camera.Constants.Type.back);
