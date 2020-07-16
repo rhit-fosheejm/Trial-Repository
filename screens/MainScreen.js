@@ -157,14 +157,14 @@ export default class MainScreen extends React.Component {
 
   onChangeText(query) {
     this.setState({ query });
-    getPredictionWithDetail(query, this.state.KEY).then((result) => {
+    getPredictionWithDetail(query, GOOGLE_MAPS_APIKEY).then((result) => {
       this.setState({ data: result, loading: false });
     });
   }
 
   onChangeText(query) {
     this.setState({ query });
-    getPredictionWithDetail(query, this.state.KEY).then((result) => {
+    getPredictionWithDetail(query, GOOGLE_MAPS_APIKEY).then((result) => {
       this.setState({ data: result, loading: false });
     });
   }
