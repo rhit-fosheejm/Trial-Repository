@@ -24,8 +24,11 @@ const SplashScreen = (props) => {
         <Text> Hail Indy !!! </Text>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.title}>Ride with IndyGo, Safe and Convenient!</Text>
-        <Text style={styles.text}> A Safe and easy way to Commute!</Text>
+        <Text style={styles.title}>
+          The convenience of ride share, with the safety and reliability of
+          IndyGo
+        </Text>
+        {/* <Text style={styles.text}> A Safe and easy way to Commute!</Text> */}
         <View style={styles.button}>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("SignInScreen")}
