@@ -161,7 +161,7 @@ const SignInScreen = (props) => {
         </View>
         {data.isValidPassword ? null : (
           <Text style={styles.errorMsg}>
-            Paswword must be 8 character long.
+            Password must be 8 character long.
           </Text>
         )}
         <TouchableOpacity>

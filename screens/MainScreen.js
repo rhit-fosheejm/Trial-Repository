@@ -112,6 +112,7 @@ import Geojson from "react-native-geojson";
 import AutoCompleteBox from "../component/AutoCompleteBox";
 import AutoCompleteResultList from "../component/AutoCompleteResultList";
 import { getPredictionWithDetail } from "../services.js";
+import Icon from "react-native-vector-icons/Feather";
 
 import MapView from "react-native-maps";
 import Polyline from "@mapbox/polyline";
@@ -147,6 +148,7 @@ export default class MainScreen extends React.Component {
       cordLongitude: -86.14,
       query: "",
       data: [],
+      KEY: "GOOGLE_MAPS_APIKEY",
       loading: false,
     };
 
@@ -155,14 +157,14 @@ export default class MainScreen extends React.Component {
 
   onChangeText(query) {
     this.setState({ query });
-    getPredictionWithDetail(query, KEY).then((result) => {
+    getPredictionWithDetail(query, this.state.KEY).then((result) => {
       this.setState({ data: result, loading: false });
     });
   }
 
   onChangeText(query) {
     this.setState({ query });
-    getPredictionWithDetail(query, KEY).then((result) => {
+    getPredictionWithDetail(query, this.state.KEY).then((result) => {
       this.setState({ data: result, loading: false });
     });
   }
