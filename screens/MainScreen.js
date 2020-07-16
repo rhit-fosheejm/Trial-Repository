@@ -160,6 +160,13 @@ export default class MainScreen extends React.Component {
     });
   }
 
+  onChangeText(query) {
+    this.setState({ query });
+    getPredictionWithDetail(query, KEY).then((result) => {
+      this.setState({ data: result, loading: false });
+    });
+  }
+
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
       (position) => {

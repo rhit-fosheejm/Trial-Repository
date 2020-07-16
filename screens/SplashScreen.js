@@ -17,18 +17,17 @@ const SplashScreen = (props) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require("../assets/IndyGo.png")}
+          source={require("../assets/HailLogo.png")}
           style={styles.logo}
           resizeMode="stretch"
         />
-        <Text> Hail Indy !!! </Text>
       </View>
       <View style={styles.footer}>
-        <Text style={styles.title}>
+        <Text style={styles.title}>EZ Hail!</Text>
+        <Text style={styles.text}>
           The convenience of ride share, with the safety and reliability of
           IndyGo
         </Text>
-        {/* <Text style={styles.text}> A Safe and easy way to Commute!</Text> */}
         <View style={styles.button}>
           <TouchableOpacity
             onPress={() => props.navigation.navigate("SignInScreen")}
@@ -50,7 +49,7 @@ const SplashScreen = (props) => {
 export default SplashScreen;
 
 const { height } = Dimensions.get("screen");
-const height_logo = height * 0.28;
+const height_logo = height * 0.35;
 
 const styles = StyleSheet.create({
   container: {
@@ -77,11 +76,13 @@ const styles = StyleSheet.create({
   title: {
     color: "black",
     fontSize: 30,
+    fontStyle: "italic",
     fontWeight: "bold",
   },
   text: {
     color: "white",
-    fontSize: 15,
+    fontStyle: "italic",
+    fontSize: 20,
     marginTop: 5,
   },
   button: {
