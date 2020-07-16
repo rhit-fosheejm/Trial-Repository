@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
     zIndex: 9,
     position: "absolute",
     flexDirection: "row",
-    width: WIDTH - 40,
+    width: WIDTH - 20,
     height: 60,
-    top: 20,
-    left: 20,
+    top: 10,
+    left: 10,
     borderRadius: 2,
     backgroundColor: "white",
     alignItems: "center",
@@ -81,7 +81,7 @@ const AutoCompleteBox = (props) => (
     <MaterialIcons
       style={styles.searchIcon}
       name="search"
-      size={20}
+      size={27}
       color="#000"
     />
     <TextInput
@@ -90,7 +90,7 @@ const AutoCompleteBox = (props) => (
       style={styles.AutoCompleteInput}
     />
     <TouchableOpacity onPress={() => props.clearInput()}>
-      <MaterialIcons name="clear" size={20} />
+      <MaterialIcons style={styles.searchIcon} name="clear" size={27} />
     </TouchableOpacity>
   </View>
 );
