@@ -306,9 +306,8 @@ const styles = StyleSheet.create({
   //   backgroundColor: "#fff",
   // },
   button: {
-    // alignItems: "flex-end",
     marginTop: 750,
-    marginLeft: 184,
+    marginHorizontal: 184,
   },
   hail: {
     padding: 5,
