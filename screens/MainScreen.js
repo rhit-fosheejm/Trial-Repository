@@ -216,7 +216,6 @@ export default class MainScreen extends React.Component {
       this.setState({ x: "true" });
       return coords;
     } catch (error) {
-      console.log("masuk fungsi");
       this.setState({ x: "error" });
       return error;
     }
@@ -226,7 +225,7 @@ export default class MainScreen extends React.Component {
     return (
       <View style={styles.map}>
         <AutoCompleteBox
-          placeholder="Masukan Nama Tempat"
+          placeholder="Where to?"
           value={this.state.query}
           onChangeText={(query) => this.onChangeText(query)}
         />
