@@ -1,97 +1,67 @@
-const qs = require('qs');
+const qs = require("qs");
 
-const fetch = require('react-native-cancelable-fetch');
-
-
+const fetch = require("react-native-cancelable-fetch");
 
 function getPredictionList(searchQuery, key) {
-
   const queryString = qs.stringify({
-
     input: searchQuery,
 
-    type: 'geocode',
+    type: "geocode",
 
-    key
-
+    key,
   });
 
   const uri = `https://maps.googleapis.com/maps/api/place/autocomplete/json?${queryString}`;
 
-  return fetch(uri, null, 'prediction').then(response => response.json());
-
+  return fetch(uri, null, "prediction").then((response) => response.json());
 }
 
-
-
 function getPlaceDetails(placeId, key) {
-
   const queryString = qs.stringify({
-
     placeid: placeId,
 
-    key
-
+    key,
   });
 
   const uri = `https://maps.googleapis.com/maps/api/place/details/json?${queryString}`;
 
-
-
-  return fetch(uri, null, 'placeDetail').then(response => response.json());
-
+  return fetch(uri, null, "placeDetail").then((response) => response.json());
 }
 
-
-
 export function getPredictionWithDetail(searchQuery, key) {
-
-  fetch.abort('prediction');
-
-  fetch.abort('placeDetail');
+  fetch.abort("prediction");
+  fetch.abort("placeDetail");
 
   return getPredictionList(searchQuery, key)
-
-    .then(result => {
-
+    .then((result) => {
       const predictions = result.predictions;
 
-      const predictionsPromise = predictions.map(prediction =>
-
+      const predictionsPromise = predictions.map((prediction) =>
         getPlaceDetails(prediction.place_id, key)
-
       );
 
       return Promise.all(predictionsPromise);
-
     })
 
-    .then(data => {
+    .then((data) => {
+      //console.log(data);
 
-      console.log(data);
-
-      const predictionDetails = data.map(predictionItem => ({
-
+      const predictionDetails = data.map((predictionItem) => ({
         name: predictionItem.result.name,
 
         formatted_address: predictionItem.result.formatted_address,
 
         geometry: predictionItem.result.geometry,
 
-        placeId: predictionItem.result.place_id
-
+        placeId: predictionItem.result.place_id,
       }));
 
       return predictionDetails;
-
     })
 
-    .catch(err => {
-
+    .catch((err) => {
       console.log(err.toString());
 
       return err;
-
     });
-
 }

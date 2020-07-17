@@ -11,7 +11,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import { color } from "react-native-reanimated";
-
+const WIDTH = Dimensions.get("window").width;
 const SplashScreen = (props) => {
   return (
     <View style={styles.container}>
@@ -37,7 +37,7 @@ const SplashScreen = (props) => {
               style={styles.signIn}
             >
               <Text style={styles.textSign}>Start</Text>
-              <MaterialIcons name="navigate-next" color="#fff" size={20} />
+              <MaterialIcons name="navigate-next" color="#fff" size={32} />
             </LinearGradient>
           </TouchableOpacity>
         </View>
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   title: {
     color: "black",
     fontSize: 30,
+    marginLeft: WIDTH * 0.3,
     fontStyle: "italic",
     fontWeight: "bold",
   },
@@ -100,5 +101,6 @@ const styles = StyleSheet.create({
   textSign: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 22,
   },
 });

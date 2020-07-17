@@ -116,6 +116,9 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import MapView from "react-native-maps";
 import Polyline from "@mapbox/polyline";
 import { LinearGradient } from "expo-linear-gradient";
+//import { CurrentButton } from "../component/CurrentButton";
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
 
 const alcatraz = {
   type: "FeatureCollection",
@@ -130,6 +133,7 @@ const alcatraz = {
     },
   ],
 };
+
 const GOOGLE_MAPS_APIKEY = "AIzaSyCkNvrH4iYOhuIrUsmFE1bEgDCBJSTX9Fg";
 // export class MainScreen extends React.Component{
 export default class MainScreen extends React.Component {
@@ -158,16 +162,18 @@ export default class MainScreen extends React.Component {
   onChangeText(query) {
     this.setState({ query });
     getPredictionWithDetail(query, GOOGLE_MAPS_APIKEY).then((result) => {
+      //console.log(result);
       this.setState({ data: result, loading: false });
+      // console.log(this.state.data);
     });
   }
 
-  onChangeText(query) {
-    this.setState({ query });
-    getPredictionWithDetail(query, GOOGLE_MAPS_APIKEY).then((result) => {
-      this.setState({ data: result, loading: false });
-    });
-  }
+  // onChangeText(query) {
+  //   this.setState({ query });
+  //   getPredictionWithDetail(query, GOOGLE_MAPS_APIKEY).then((result) => {
+  //     this.setState({ data: result, loading: false });
+  //   });
+  // }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(
@@ -180,7 +186,7 @@ export default class MainScreen extends React.Component {
         this.mergeLot();
       },
       (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 }
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
   }
 
@@ -221,12 +227,20 @@ export default class MainScreen extends React.Component {
       return error;
     }
   }
+  centerMap() {
+    const {
+      latitude,
+      longitude,
+      latitudeDelta,
+      longitudeDelta,
+    } = this.state.region;
+  }
 
   render() {
     return (
       <View style={styles.map}>
         <AutoCompleteBox
-          placeholder="Masukan Nama Tempat"
+          placeholder="Search here"
           value={this.state.query}
           onChangeText={(query) => this.onChangeText(query)}
         />
@@ -237,9 +251,16 @@ export default class MainScreen extends React.Component {
           initialRegion={{
             latitude: 39.76691,
             longitude: -86.14996,
-            latitudeDelta: 5,
-            longitudeDelta: 5,
+            latitudeDelta: 0.522,
+            longitudeDelta: 0.0421,
           }}
+          showsCompass={true}
+          showsUserLocation={true}
+          showsMyLocationButton={true}
+          showsTraffic={false}
+          showsBuildings={true}
+          showsScale={true}
+          ref={(map) => (this.map = map)}
         >
           <Geojson geojson={alcatraz} />
           {!!this.state.latitude && !!this.state.longitude && (
@@ -280,6 +301,11 @@ export default class MainScreen extends React.Component {
               />
             )}
         </MapView>
+        {/* <CurrentButton
+          cb={() => {
+            this.centerMap();
+          }}
+        /> */}
         <View style={styles.button}>
           <TouchableOpacity>
             <LinearGradient colors={["#08d4c4", "#08D45D"]} style={styles.hail}>
@@ -306,8 +332,10 @@ const styles = StyleSheet.create({
   //   backgroundColor: "#fff",
   // },
   button: {
-    marginTop: 750,
-    marginHorizontal: 184,
+    //marginTop: HEIGHT - 170,
+    marginTop: HEIGHT * 0.75,
+    // marginHorizontal: WIDTH - 250,
+    marginHorizontal: WIDTH * 0.4,
   },
   hail: {
     padding: 5,
