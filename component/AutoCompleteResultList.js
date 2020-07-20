@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
+import { List, Left, ListItem, Body } from "native-base";
 
 const styles = StyleSheet.create({
   AutoCompleteResultList: {
@@ -33,8 +34,18 @@ class AutoCompleteResultList extends Component {
   renderItem({ item }) {
     return (
       <View style={styles.AutoCompleteResultItem}>
-        <Text style={styles.titleText}>{console.log(item.name)}</Text>
-        <Text style={styles.text}>{console.log(item.formatted_address)}</Text>
+        <List>
+          <View>
+            <ListItem>
+              <Body>
+                <Text style={styles.titleText}>{console.log(item.name)}</Text>
+                <Text style={styles.text}>
+                  {console.log(item.formatted_address)}
+                </Text>
+              </Body>
+            </ListItem>
+          </View>
+        </List>
       </View>
     );
   }

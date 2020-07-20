@@ -17,6 +17,7 @@ import { TextInput } from "react-native-gesture-handler";
 import Users from "../model/user";
 import { AuthorizationContext } from "../component/context";
 import user from "../model/user";
+import * as Animatable from "react-native-animatable";
 const SignInScreen = (props) => {
   const [data, setData] = React.useState({
     userName: "",
@@ -120,7 +121,7 @@ const SignInScreen = (props) => {
       <View style={styles.header}>
         <Text style={styles.text_header}>Welcome To Indy Rides</Text>
       </View>
-      <View style={styles.footer}>
+      <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <Text style={styles.text_footer}>Username</Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color="#05375a" sie={20} />
@@ -207,7 +208,7 @@ const SignInScreen = (props) => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animatable.View>
     </View>
   );
 };

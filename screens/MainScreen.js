@@ -116,6 +116,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import MapView from "react-native-maps";
 import Polyline from "@mapbox/polyline";
 import { LinearGradient } from "expo-linear-gradient";
+import * as Animatable from "react-native-animatable";
 //import { CurrentButton } from "../component/CurrentButton";
 const WIDTH = Dimensions.get("window").width;
 const HEIGHT = Dimensions.get("window").height;
@@ -133,6 +134,9 @@ const alcatraz = {
     },
   ],
 };
+const AnimatableTouchable = Animatable.createAnimatableComponent(
+  TouchableOpacity
+);
 
 const GOOGLE_MAPS_APIKEY = "AIzaSyCkNvrH4iYOhuIrUsmFE1bEgDCBJSTX9Fg";
 // export class MainScreen extends React.Component{
@@ -305,13 +309,18 @@ export default class MainScreen extends React.Component {
             this.centerMap();
           }}
         /> */}
-        <View style={styles.button}>
+        <Animatable.View style={styles.button} animation="zoomInUp">
           <TouchableOpacity>
-            <LinearGradient colors={["#08d4c4", "#08D45D"]} style={styles.hail}>
-              <MaterialCommunityIcons name="hail" size={40} />
-            </LinearGradient>
+            <Animatable.View animation="wobble">
+              <LinearGradient
+                colors={["#08d4c4", "#08D45D"]}
+                style={styles.hail}
+              >
+                <MaterialCommunityIcons name="hail" size={40} />
+              </LinearGradient>
+            </Animatable.View>
           </TouchableOpacity>
-        </View>
+        </Animatable.View>
       </View>
     );
   }
@@ -332,9 +341,11 @@ const styles = StyleSheet.create({
   // },
   button: {
     //marginTop: HEIGHT - 170,
-    marginTop: HEIGHT * 0.75,
+    //marginTop: HEIGHT * 0.75,
+    marginTop: HEIGHT * WIDTH * 0.0018,
     // marginHorizontal: WIDTH - 250,
-    marginHorizontal: WIDTH * 0.4,
+    //marginHorizontal: HEIGHT * WIDTH * 0.00045,
+    marginHorizontal: WIDTH / 2.45,
   },
   hail: {
     padding: 5,

@@ -10,19 +10,20 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import { color } from "react-native-reanimated";
+import * as Animatable from "react-native-animatable";
 const WIDTH = Dimensions.get("window").width;
 const SplashScreen = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image
+        <Animatable.Image
+          animation="bounceIn"
           source={require("../assets/HailLogo.png")}
           style={styles.logo}
           resizeMode="stretch"
         />
       </View>
-      <View style={styles.footer}>
+      <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <Text style={styles.title}>EZ Hail!</Text>
         <Text style={styles.text}>
           The convenience of ride share, with the safety and reliability of
@@ -41,7 +42,7 @@ const SplashScreen = (props) => {
             </LinearGradient>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animatable.View>
     </View>
   );
 };

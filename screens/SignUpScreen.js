@@ -12,6 +12,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 import { color } from "react-native-reanimated";
+import * as Animatable from "react-native-animatable";
 import { TextInput } from "react-native-gesture-handler";
 
 const SignUpScreen = (props) => {
@@ -132,7 +133,7 @@ const SignUpScreen = (props) => {
       <View style={styles.header}>
         <Text style={styles.text_header}>Create Account Here</Text>
       </View>
-      <View style={styles.footer}>
+      <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <Text style={styles.text_footer}>Email</Text>
         <View style={styles.action}>
           <FontAwesome name="user-o" color="#05375a" sie={20} />
@@ -243,7 +244,7 @@ const SignUpScreen = (props) => {
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animatable.View>
     </View>
   );
 };
