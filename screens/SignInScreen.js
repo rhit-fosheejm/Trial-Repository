@@ -166,7 +166,7 @@ const SignInScreen = (props) => {
         )}
         <TouchableOpacity>
           <Text style={{ color: "#7BD70B", marginTop: 15 }}>
-            Forogot password ?
+            Forgot password ?
           </Text>
         </TouchableOpacity>
         <View style={styles.button}>
