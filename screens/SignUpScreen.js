@@ -210,9 +210,7 @@ const SignUpScreen = (props) => {
         <View style={styles.button}>
           <TouchableOpacity
             style={styles.signIn}
-            onPress={() => {
-              signIn();
-            }}
+            onPress={() => props.navigation.navigate("SignInScreen")}
           >
             <LinearGradient
               colors={["#7BD70B", "#01ab9d"]}
@@ -236,7 +234,7 @@ const SignUpScreen = (props) => {
               style={[
                 styles.textSign,
                 {
-                  color: "#7BD70B",
+                  color: "#003a85",
                 },
               ]}
             >
@@ -254,7 +252,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#7BD70B",
+    backgroundColor: "#003a85",
   },
   header: {
     flex: 1,
@@ -276,7 +274,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   text_footer: {
-    color: "#7BD70B",
+    color: "#003a85",
     fontSize: 18,
   },
   action: {

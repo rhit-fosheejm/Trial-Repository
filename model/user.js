@@ -27,4 +27,11 @@ export default Users = [
     password: "hailindy",
     userToken: "token123456",
   },
+  {
+    id: 4,
+    email: "linda99@gmail.com",
+    username: "linda@99",
+    password: "linda*1999",
+    userToken: "tokenLinda123",
+  },
 ];

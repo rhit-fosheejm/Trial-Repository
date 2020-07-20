@@ -18,7 +18,7 @@ const SplashScreen = (props) => {
       <View style={styles.header}>
         <Animatable.Image
           animation="bounceIn"
-          source={require("../assets/HailLogo.png")}
+          source={require("../assets/HailLogoCircle.png")}
           style={styles.logo}
           resizeMode="stretch"
         />
@@ -34,7 +34,7 @@ const SplashScreen = (props) => {
             onPress={() => props.navigation.navigate("SignInScreen")}
           >
             <LinearGradient
-              colors={["#08d4c4", "#09A6E3"]}
+              colors={["#7BD70B", "#09A6E3"]}
               style={styles.signIn}
             >
               <Text style={styles.textSign}>Start</Text>
@@ -64,18 +64,19 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    backgroundColor: "#7BD70B",
+    backgroundColor: "#003a85",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingVertical: 50,
     paddingHorizontal: 30,
   },
   logo: {
-    width: height_logo,
-    height: height_logo,
+    marginTop: 30,
+    width: height_logo * 1.2,
+    height: height_logo * 1.2,
   },
   title: {
-    color: "black",
+    color: "white",
     fontSize: 30,
     marginLeft: WIDTH * 0.3,
     fontStyle: "italic",
@@ -84,8 +85,11 @@ const styles = StyleSheet.create({
   text: {
     color: "white",
     fontStyle: "italic",
+    justifyContent: "center",
     fontSize: 20,
-    marginTop: 5,
+    marginTop: 20,
+    marginLeft: 10,
+    marginRight: 10,
   },
   button: {
     alignItems: "flex-end",

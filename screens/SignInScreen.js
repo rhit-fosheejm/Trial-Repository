@@ -166,7 +166,7 @@ const SignInScreen = (props) => {
           </Text>
         )}
         <TouchableOpacity>
-          <Text style={{ color: "#7BD70B", marginTop: 15 }}>
+          <Text style={{ color: "#003a85", marginTop: 15 }}>
             Forgot password ?
           </Text>
         </TouchableOpacity>
@@ -200,7 +200,7 @@ const SignInScreen = (props) => {
               style={[
                 styles.textSign,
                 {
-                  color: "#7BD70B",
+                  color: "#003a85",
                 },
               ]}
             >
@@ -218,7 +218,7 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#7BD70B",
+    backgroundColor: "#003a85",
   },
   header: {
     flex: 1,
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   text_footer: {
-    color: "#7BD70B",
+    color: "#003a85",
     fontSize: 18,
   },
   action: {
