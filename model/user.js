@@ -30,8 +30,8 @@ export default Users = [
   {
     id: 4,
     email: "linda99@gmail.com",
-    username: "linda@99",
-    password: "linda*1999",
+    username: "linda99@gmail.com",
+    password: "Linda*1999",
     userToken: "tokenLinda123",
   },
 ];

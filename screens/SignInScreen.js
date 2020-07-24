@@ -281,5 +281,8 @@ const styles = StyleSheet.create({
   textSign: {
     fontSize: 18,
     fontWeight: "bold",
+    // justifyContent: "center",
+    // alignItems: "center",
+    //marginLeft: 150,
   },
 });

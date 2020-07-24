@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import { List, Left, ListItem, Body } from "native-base";
 
@@ -9,16 +9,16 @@ const styles = StyleSheet.create({
     borderColor: "#aaa",
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    elevation: 1,
+    elevation: 7,
   },
   AutoCompleteResultItem: {
     padding: 10,
-    marginHorizontal: 10,
+    //marginHorizontal: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: "#aaa",
   },
   titleText: {
-    fontWeight: "600",
+    fontWeight: "bold",
     color: "#333",
     marginTop: 5,
     marginBottom: 3,
@@ -29,16 +29,30 @@ const styles = StyleSheet.create({
     color: "#999",
   },
 });
+const Item = ({ name, formatted_address }) => (
+  <View style={styles.AutoCompleteResultItem}>
+    <List>
+      <View>
+        <ListItem>
+          <Body>
+            <Text style={styles.titleText}>{name}</Text>
+            <Text style={styles.text}>{console.log(formatted_address)}</Text>
+          </Body>
+        </ListItem>
+      </View>
+    </List>
+  </View>
+);
 
 class AutoCompleteResultList extends Component {
   renderItem({ item }) {
     return (
-      <View style={styles.AutoCompleteResultItem}>
+      <View>
         <List>
           <View>
             <ListItem>
               <Body>
-                <Text style={styles.titleText}>{console.log(item.name)}</Text>
+                <Text style={styles.titleText}>{item.name}</Text>
                 <Text style={styles.text}>
                   {console.log(item.formatted_address)}
                 </Text>
@@ -57,6 +71,7 @@ class AutoCompleteResultList extends Component {
             {...this.props}
             contentContainerStyle={styles.AutoCompleteResultList}
             renderItem={this.renderItem}
+            keyExtractor={(item) => item.id}
           />
         )}
       </View>

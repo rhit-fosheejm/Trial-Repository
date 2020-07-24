@@ -44,7 +44,7 @@ export function getPredictionWithDetail(searchQuery, key) {
     })
 
     .then((data) => {
-      //console.log(data);
+      // console.log(data);
 
       const predictionDetails = data.map((predictionItem) => ({
         name: predictionItem.result.name,
@@ -54,6 +54,8 @@ export function getPredictionWithDetail(searchQuery, key) {
         geometry: predictionItem.result.geometry,
 
         placeId: predictionItem.result.place_id,
+
+        id: predictionItem.result.id,
       }));
 
       return predictionDetails;
