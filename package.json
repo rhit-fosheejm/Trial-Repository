@@ -32,7 +32,7 @@
     "material-ui-search-bar": "^0.4.2",
     "native-base": "^2.13.12",
     "prop-types": "^15.5.10",
-    "qs": "~6.9.1",
+    "qs": "~6.9.7",
     "react": "16.13.1",
     "react-addons-update": "^15.6.2",
     "react-dom": "~16.11.0",
